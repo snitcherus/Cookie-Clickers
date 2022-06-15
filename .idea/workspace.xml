@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90651927-ad7e-4f84-8402-eddd70dad0ee" name="Changes" comment="Cookiee">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/snitchi/cookieclicker/factory/CookieFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/snitchi/cookieclicker/listener/PlayerJoinListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/snitchi/cookieclicker/util/ConfigHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cookies.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/snitchi/cookieclicker/CookieClickerPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/snitchi/cookieclicker/CookieClickerPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/snitchi/cookieclicker/listener/PlayerJumpListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/snitchi/cookieclicker/listener/PlayerJumpListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/snitchi/cookieclicker/util/ListenerRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/snitchi/cookieclicker/util/ListenerRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/CookieClicker.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CookieClicker.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
