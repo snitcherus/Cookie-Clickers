@@ -1,9 +1,11 @@
 package de.snitchi.cookieclicker.factory;
 
 import de.snitchi.cookieclicker.util.ConfigHandler;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitScheduler;
 
 public class CookieFactory {
 
@@ -34,7 +36,21 @@ public class CookieFactory {
      * @param player player
      */
     public void getCookiesPerSecond(Player player) {
-        getCookies(player, cookiesPerSecond);
+
+        FileConfiguration cookiesConfig = configHandler.getCookiesConfig();
+
+        BukkitScheduler bukkitScheduler = Bukkit.getScheduler();
+        bukkitScheduler.runTaskTimer(plugin, task -> {
+
+            if(!cookiesConfig.getBoolean(player.getUniqueId() + ".Is_Online")) {
+                task.cancel();
+                return;
+            }
+
+            getCookies(player, cookiesPerSecond);
+            player.sendMessage("Cookie");
+            System.out.println("Cookie");
+        }, 20L, 20L);
     }
 
     /**
@@ -52,6 +68,7 @@ public class CookieFactory {
             cookiesConfig.set(playerUUID + ".Shorted_Cookies", 0);
             cookiesConfig.set(playerUUID + ".Jump_Cookies", 1000);
             cookiesConfig.set(playerUUID + ".Second_Cookies", 0);
+            cookiesConfig.set(playerUUID + ".Is_Online", true);
             configHandler.saveCookiesConfig(plugin);
         }
     }
