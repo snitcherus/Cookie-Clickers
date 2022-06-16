@@ -19,6 +19,6 @@ public class CookieClickerPlugin extends JavaPlugin {
 
         configHandler.loadConfig(this);
         listenerRegistry.registerListener(this, resourceMessage, cookieFactory);
-        commandRegistry.registerCommand(this);
+        commandRegistry.registerCommand(this, configHandler);
     }
 }

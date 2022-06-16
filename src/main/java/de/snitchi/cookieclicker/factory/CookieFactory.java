@@ -42,6 +42,24 @@ public class CookieFactory {
         digitCalculator(cookiesConfig, 1000000, playerUUID, "M");
     }
 
+    public void getCookiesPerSecond(Player player) {
+
+        FileConfiguration cookiesConfig = configHandler.getCookiesConfig();
+        String playerUUID = player.getUniqueId().toString();
+
+        getConfigCookies(cookiesConfig, playerUUID);
+
+        currentCookies += cookiesPerSecond;
+
+        if(currentCookies < 1000) {
+            cookiesConfig.set(playerUUID + ".Current_Cookies", currentCookies);
+            configHandler.saveCookiesConfig(plugin);
+        }
+
+        digitCalculator(cookiesConfig, 1000, playerUUID, "K");
+        digitCalculator(cookiesConfig, 1000000, playerUUID, "M");
+    }
+
     /**
      * New player? Lets set the base values!
      * @param player player
@@ -70,6 +88,7 @@ public class CookieFactory {
         currentCookies = fileConfiguration.getInt(playerUUID + ".Current_Cookies");
         jumpCookies = fileConfiguration.getInt(playerUUID + ".Jump_Cookies");
         shortedCookies = fileConfiguration.getInt(playerUUID + ".Shorted_Cookies");
+        cookiesPerSecond = fileConfiguration.getInt(playerUUID + ".Second_Cookies");
     }
 
     private void digitCalculator(FileConfiguration fileConfiguration, int newDigit, String playerUUID, String letter) {

@@ -15,7 +15,7 @@ public class ListenerRegistry {
         Listener playerJumpListener = new PlayerJumpListener(resourceMessage, cookieFactory);
         pluginManager.registerEvents(playerJumpListener, plugin);
 
-        Listener playerJoinListener = new PlayerJoinListener(cookieFactory);
+        Listener playerJoinListener = new PlayerJoinListener(cookieFactory, plugin);
         pluginManager.registerEvents(playerJoinListener, plugin);
         /* Sample:
         Listener joinListener = new JoinListener(configHandler);
