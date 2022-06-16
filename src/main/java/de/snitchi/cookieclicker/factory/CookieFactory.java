@@ -22,42 +22,19 @@ public class CookieFactory {
 
     /**
      * Jacky credit -.-
+     * Gives the player cookies per jump
      * @param player jumped player
      */
     public void getJumpCookies(Player player){
-
-        FileConfiguration cookiesConfig = configHandler.getCookiesConfig();
-        String playerUUID = player.getUniqueId().toString();
-
-        getConfigCookies(cookiesConfig, playerUUID);
-
-        currentCookies += jumpCookies;
-
-        if(currentCookies < 1000) {
-            cookiesConfig.set(playerUUID + ".Current_Cookies", currentCookies);
-            configHandler.saveCookiesConfig(plugin);
-        }
-
-        digitCalculator(cookiesConfig, 1000, playerUUID, "K");
-        digitCalculator(cookiesConfig, 1000000, playerUUID, "M");
+        getCookies(player, jumpCookies);
     }
 
+    /**
+     * Gives the player cookies per second
+     * @param player player
+     */
     public void getCookiesPerSecond(Player player) {
-
-        FileConfiguration cookiesConfig = configHandler.getCookiesConfig();
-        String playerUUID = player.getUniqueId().toString();
-
-        getConfigCookies(cookiesConfig, playerUUID);
-
-        currentCookies += cookiesPerSecond;
-
-        if(currentCookies < 1000) {
-            cookiesConfig.set(playerUUID + ".Current_Cookies", currentCookies);
-            configHandler.saveCookiesConfig(plugin);
-        }
-
-        digitCalculator(cookiesConfig, 1000, playerUUID, "K");
-        digitCalculator(cookiesConfig, 1000000, playerUUID, "M");
+        getCookies(player, cookiesPerSecond);
     }
 
     /**
@@ -91,6 +68,37 @@ public class CookieFactory {
         cookiesPerSecond = fileConfiguration.getInt(playerUUID + ".Second_Cookies");
     }
 
+    /**
+     * Gets cookies from specified sources
+     * @param player player
+     * @param newCookies source type
+     */
+    private void getCookies(Player player, long newCookies) {
+
+        FileConfiguration cookiesConfig = configHandler.getCookiesConfig();
+        String playerUUID = player.getUniqueId().toString();
+
+        getConfigCookies(cookiesConfig, playerUUID);
+
+        currentCookies += newCookies;
+
+        if(currentCookies < 1000) {
+            cookiesConfig.set(playerUUID + ".Current_Cookies", currentCookies);
+            configHandler.saveCookiesConfig(plugin);
+        }
+
+        digitCalculator(cookiesConfig, 1000, playerUUID, "K");
+        digitCalculator(cookiesConfig, 1000000, playerUUID, "M");
+
+    }
+
+    /**
+     * Calculator for digits
+     * @param fileConfiguration cookies config
+     * @param newDigit digit for the cool calculations
+     * @param playerUUID player uuid
+     * @param letter letter after the number
+     */
     private void digitCalculator(FileConfiguration fileConfiguration, int newDigit, String playerUUID, String letter) {
 
         if(currentCookies >= newDigit){
